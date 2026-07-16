@@ -41,4 +41,10 @@ Expected Output:
 Final Count: < 2000 (like 1785, 1950, etc.)
 
 👉 Due to race condition
+--------------------------------------------
+count++ is NOT atomic:
+Read
+Increment
+Write
+👉 Threads interfere → wrong result
 */
