@@ -60,3 +60,15 @@ Transaction successful!
  If any error occurs:
 Transaction failed! Rolled back.
 */
+
+/*
+Before running -> 
+create Account table: 
+
+CREATE TABLE account (
+    id INT PRIMARY KEY,
+    balance INT
+);
+
+INSERT INTO account VALUES (1, 1000), (2, 1000);
+*/
