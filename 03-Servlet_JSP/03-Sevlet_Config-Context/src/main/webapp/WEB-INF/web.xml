@@ -1,0 +1,36 @@
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         version="5.0">
+
+    <!--  ServletConfig Example -->
+    <servlet>
+        <servlet-name>ConfigServlet</servlet-name>
+        <servlet-class>Servlet.ConfigExampleServlet</servlet-class>
+
+        <init-param>
+            <param-name>message</param-name>
+            <param-value>Hello from Config</param-value>
+        </init-param>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ConfigServlet</servlet-name>
+        <url-pattern>/config</url-pattern>
+    </servlet-mapping>
+
+    <!-- ServletContext Example -->
+    <context-param>
+        <param-name>appName</param-name>
+        <param-value>MediConnect App</param-value>
+    </context-param>
+
+    <servlet>
+        <servlet-name>ContextServlet</servlet-name>
+        <servlet-class>Servlet.ContextExampleServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ContextServlet</servlet-name>
+        <url-pattern>/context</url-pattern>
+    </servlet-mapping>
+
+</web-app>
