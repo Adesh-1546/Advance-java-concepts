@@ -18,7 +18,7 @@ public class ResultSetExample {
 
             System.out.println("Fetching data...");
 
-            // 🔹 Iterating ResultSet
+            // Iterating ResultSet
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
