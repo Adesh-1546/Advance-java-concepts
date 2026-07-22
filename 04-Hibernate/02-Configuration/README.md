@@ -1,64 +1,82 @@
-# Hibernate Configuration
+# Hibernate & JPA Configuration
 
-Hibernate configuration is used to set up database connection and mapping between Java classes and database tables.
+This module includes two configuration approaches:
 
----
+1. Hibernate Configuration (hibernate.cfg.xml)
+2. JPA Configuration (persistence.xml)
 
-## 🔑 What is hibernate.cfg.xml?
-
-* Main configuration file
-* Contains database details
-* Defines Hibernate properties
+Both are used to connect Java applications with a database, but they follow different APIs.
 
 ---
 
-## 🔥 Key Properties
+## 🔑 1. Hibernate Configuration (hibernate.cfg.xml)
 
-### Database Connection
+Used with:
 
-* driver_class → JDBC driver
-* url → database URL
-* username/password → credentials
+* Hibernate Session API
 
----
+### Purpose
 
-### Hibernate Settings
+* Configure database connection
+* Define Hibernate properties
+* Map entity classes
 
-* dialect → database type
-* show_sql → display SQL queries
-* hbm2ddl.auto → schema management
+### Example Usage
 
----
-
-## 🔥 hbm2ddl.auto Options
-
-| Value    | Meaning                  |
-| -------- | ------------------------ |
-| create   | Creates table every time |
-| update   | Updates table            |
-| validate | Validates schema         |
-| none     | No action                |
-
----
-
-## 🔥 Mapping
-
-```xml
-<mapping class="Hibernate.Student"/>
+```java
+SessionFactory factory = new Configuration().configure().buildSessionFactory();
+Session session = factory.openSession();
 ```
 
-Maps Java class to table.
+---
+
+## 🔑 2. JPA Configuration (persistence.xml)
+
+Used with:
+
+* JPA EntityManager API (implemented by Hibernate)
+
+### Purpose
+
+* Define persistence unit
+* Configure database connection
+* Manage entities using JPA
+
+### Example Usage
+
+```java
+EntityManagerFactory emf = Persistence.createEntityManagerFactory("myPU");
+EntityManager em = emf.createEntityManager();
+```
+
+---
+
+## ⚖️ Difference Between Both
+
+| Hibernate (cfg.xml) | JPA (persistence.xml) |
+| ------------------- | --------------------- |
+| Uses Session API    | Uses EntityManager    |
+| Hibernate-specific  | Standard JPA          |
+| More control        | More abstraction      |
+| Older approach      | Modern approach       |
+
+---
+
+## 🔥 When to Use What?
+
+* Use **hibernate.cfg.xml** when working with Hibernate Session
+* Use **persistence.xml** when working with JPA (EntityManager)
 
 ---
 
 ## ⚠️ Important Points
 
-* Must match database configuration
-* Mapping class is required
-* Dialect depends on DB
+* Do not mix both APIs in the same logic flow
+* Choose one approach per implementation
+* JPA is preferred in modern applications
 
 ---
 
 ## 🚀 Summary
 
-hibernate.cfg.xml is used to configure database connection and Hibernate behavior.
+Hibernate configuration uses hibernate.cfg.xml for Session-based operations, while JPA uses persistence.xml for EntityManager-based operations. Hibernate can act as the implementation for JPA.
