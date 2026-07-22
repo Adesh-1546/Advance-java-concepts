@@ -1,0 +1,19 @@
+<servlet>
+    <servlet-name>ForwardServlet</servlet-name>
+    <servlet-class>Servlet.RequestDispatcherExample</servlet-class>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>ForwardServlet</servlet-name>
+    <url-pattern>/forward</url-pattern>
+</servlet-mapping>
+
+<servlet>
+    <servlet-name>RedirectServlet</servlet-name>
+    <servlet-class>Servlet.SendRedirectExample</servlet-class>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>RedirectServlet</servlet-name>
+    <url-pattern>/redirect</url-pattern>
+</servlet-mapping>
